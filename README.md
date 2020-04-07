@@ -1,1 +1,2 @@
-SCSS, flexbox, Grid Clone Project
+## React Project
+## MyRealTrip Frontend Clone Coding

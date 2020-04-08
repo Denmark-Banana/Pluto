@@ -6,8 +6,8 @@ import {
   Switch
 } from "react-router-dom";
 
-import Home from '../Routes/Home'
-import HotelList from '../Routes/HotelList'
+import Home from '../Pages/Home'
+import HotelList from '../Pages/HotelList'
 
 export default () => (
   <Router>

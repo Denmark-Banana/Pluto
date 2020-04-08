@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Emoji from '../Components/Emoji';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   width: 100vw;
@@ -37,8 +38,10 @@ export default () => {
     <Container>
       <WallPaper /> */}
       <Content>
-          Hello, My Hotels!{' '}
+        Hello, My Hotels!{' '}
+        <Link to="/hotels">
           <Emoji symbol="🏨" label="Hotel" />
+        </Link>
       </Content>
     </Container>
   );

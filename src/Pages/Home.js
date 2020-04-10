@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Emoji from '../Components/Emoji';
+import Emoji from 'Components/Emoji';
 import { Link } from 'react-router-dom';
 
 const Container = styled.div`

@@ -1,33 +1,38 @@
-import React, { useState } from 'react'
+import React from 'react';
 import styled from 'styled-components';
+import FilterItem from 'Components/FilterItem';
+
 
 const Container = styled.div`
-    display:flex;
-    flex-direction: column;
-    padding-right: 10vw;
+  display: flex;
+  flex-direction: column;
+  margin-right: 7vw;
 
-    width: 33vw;
+  width: 25vw;
 `;
 
 const Title = styled.span`
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 `;
 
 const Content = styled.div`
-    background-color: #FFFFFF;
-    height: 70vh;
+  padding: 40px;
+  background-color: #ffffff;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Filter = () => {
-    const [value, setValue] = useState({
-    })
-    
-    return (
-        <Container>
-            <Title>Filter</Title>
-            <Content></Content>
-        </Container>
-    );
-}
+  return (
+    <Container>
+      <Title>Filter</Title>
+      <Content>
+        <FilterItem label="1박당 요금"/>
+        <FilterItem label="리뷰 점수"/>
+      </Content>
+    </Container>
+  );
+};
 
 export default Filter;

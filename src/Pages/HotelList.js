@@ -5,6 +5,7 @@ import Hotel from 'Components/Hotel';
 import Filter from 'Components/Filter';
 import Recent from 'Components/Recent';
 import Loader from 'Components/Loader';
+import Message from 'Components/Message';
 
 const Container = styled.div`
   display: flex;
@@ -23,13 +24,22 @@ const List = styled.ul``;
 export default () => {
   const [hotels, setHotels] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     async function getHotels() {
-      const response = await api.fetchHotels(1, `PRICE=0:100000`);
-      console.log(response);
-      setHotels(response);
-      setLoading(false);
+      try {
+        const response = await api.fetchHotels(1, `PRICE=0:100000`);
+        console.log(response);
+        if(response.message)
+          setError(response.message);
+        else
+          setHotels(response);
+      } catch (e) {
+        setError(e);
+      } finally {
+        setLoading(false);
+      }
     }
 
     getHotels();
@@ -60,6 +70,7 @@ export default () => {
                 ))}
               </List>
             )}
+            {error && <Message text={error} color="#e74c3c" />}
           </Content>
         )}
       </Result>

@@ -25,7 +25,8 @@ export default () => {
   const [hotels, setHotels] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-
+  const checkItems = ['Free WIFI', 'Free Parking', 'Free Airport Pickup'];
+  
   useEffect(() => {
     async function getHotels() {
       try {
@@ -47,7 +48,7 @@ export default () => {
 
   return (
     <Container>
-      <Filter />
+      <Filter checkItems={checkItems}/>
       <Result>
         <Recent />
         {loading ? (

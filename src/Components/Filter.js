@@ -23,13 +23,14 @@ const Content = styled.div`
   flex-direction: column;
 `;
 
-const Filter = () => {
+const Filter = ({ checkItems }) => {
   return (
     <Container>
       <Title>Filter</Title>
       <Content>
-        <FilterItem label="1박당 요금"/>
-        <FilterItem label="리뷰 점수"/>
+        <FilterItem type="range" label="1박당 요금"/>
+        <FilterItem type="range" label="리뷰 점수"/>
+        <FilterItem type="check" label="시설 정보" checkItems={checkItems}/>
       </Content>
     </Container>
   );

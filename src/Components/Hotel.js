@@ -8,15 +8,58 @@ const Container = styled.li`
   background-color: #ffffff;
 `;
 
-const Title = styled.span``;
+const TitleContent = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+`;
+
+const TitleText = styled.span`
+  font-size: 15px;
+  font-weight: bold;
+`;
+
+const ReviewContent = styled.div``;
+
+const ReviewCountText = styled.span`
+  margin-right: 5px;
+`;
+const ReviewScore = styled.span`
+  font-size: 9px;
+  background-color: #060CAB;
+  color: #777777;
+  width: 15px;
+  height: 15px;
+  border-radius: 20%;
+  padding: 4px;
+`;
 
 const Image = styled.div`
   background-image: url(${(props) => props.bgUrl});
-  width: 160px;
-  height: 120px;
+  width: 210px;
+  height: 150px;
   background-size: cover;
   background-position: center center;
   cursor: pointer;
+`;
+
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+const FreeService = styled.div`
+  margin: 10px;
+`;
+const ServiceText = styled.span`
+  display: inline-block;
+  margin-right: 5px;
+  color: #1fbc41;
+  border: 1px solid #1fbc41;
+`;
+const RateText = styled.span`
+  margin: 10px;
 `;
 
 const Hotel = ({
@@ -28,12 +71,26 @@ const Hotel = ({
   reviewScore,
   totalReviewCount,
 }) => {
-
-
   return (
     <Container>
       <Image bgUrl={imageUrl}></Image>
-      <Title>Hotel</Title>
+      <Content>
+        <TitleContent>
+          <TitleText>{name}</TitleText>
+          <ReviewContent>
+            <ReviewCountText>{`${totalReviewCount}개의 이용후기`}</ReviewCountText>
+            <ReviewScore>{reviewScore}</ReviewScore>
+          </ReviewContent>
+        </TitleContent>
+        <FreeService>
+          {freeServices &&
+            freeServices.length > 0 &&
+            freeServices.map((service, idx) => (
+              <ServiceText key={idx}>{service}</ServiceText>
+            ))}
+        </FreeService>
+        <RateText>{`${rate}성급 호텔`}</RateText>
+      </Content>
     </Container>
   );
 };

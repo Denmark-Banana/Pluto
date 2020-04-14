@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.js": "/Pluto/static/js/main.b0002f76.chunk.js",
+    "main.js.map": "/Pluto/static/js/main.b0002f76.chunk.js.map",
+    "runtime-main.js": "/Pluto/static/js/runtime-main.ed60791f.js",
+    "runtime-main.js.map": "/Pluto/static/js/runtime-main.ed60791f.js.map",
+    "static/css/2.60eec0d8.chunk.css": "/Pluto/static/css/2.60eec0d8.chunk.css",
+    "static/js/2.9e51e572.chunk.js": "/Pluto/static/js/2.9e51e572.chunk.js",
+    "static/js/2.9e51e572.chunk.js.map": "/Pluto/static/js/2.9e51e572.chunk.js.map",
+    "index.html": "/Pluto/index.html",
+    "precache-manifest.b134411db8b1fe158719daf121ef4dd3.js": "/Pluto/precache-manifest.b134411db8b1fe158719daf121ef4dd3.js",
+    "service-worker.js": "/Pluto/service-worker.js",
+    "static/css/2.60eec0d8.chunk.css.map": "/Pluto/static/css/2.60eec0d8.chunk.css.map",
+    "static/js/2.9e51e572.chunk.js.LICENSE.txt": "/Pluto/static/js/2.9e51e572.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ed60791f.js",
+    "static/css/2.60eec0d8.chunk.css",
+    "static/js/2.9e51e572.chunk.js",
+    "static/js/main.b0002f76.chunk.js"
+  ]
+}

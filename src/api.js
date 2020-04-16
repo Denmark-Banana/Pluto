@@ -8,4 +8,10 @@ export const api = {
     );
     return result.json();
   },
+  fetchHotelPrice: async (page, ids) => {
+    const result = await fetch(
+      `${API_ENDPOINT}/hotel-prices?ids=${page}`,
+    );
+    return result.json();
+  }
 };

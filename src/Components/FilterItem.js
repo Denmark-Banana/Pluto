@@ -26,8 +26,8 @@ const InputText = styled.span`
 const Input = styled.input``;
 
 
-const FilterItem = ({ type, label, checkItems }) => {
-  const [value, setValue] = useState({
+const FilterItem = ({ type, label, checkItems, price, setPrice }) => {
+  const [value, setValue] = useState(price? price : {
     min: 0,
     max: 1000000,
   });

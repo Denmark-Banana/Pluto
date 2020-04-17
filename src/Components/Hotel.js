@@ -45,6 +45,7 @@ const Image = styled.div`
 
 const Content = styled.div`
   display: flex;
+  position: relative;
   flex-direction: column;
   width: 100%;
 `;
@@ -61,6 +62,16 @@ const ServiceText = styled.span`
 const RateText = styled.span`
   margin: 10px;
 `;
+const PriceText = styled.span`
+  position: absolute;
+  background-color: #479AFC;
+  color: white;
+  right: 0px;
+  bottom: 0px;
+  width: 80px;
+  height:20px;
+  padding: 5px 10px;
+`;
 
 const Hotel = ({
   id,
@@ -70,6 +81,7 @@ const Hotel = ({
   rate,
   reviewScore,
   totalReviewCount,
+  price
 }) => {
   return (
     <Container>
@@ -90,6 +102,7 @@ const Hotel = ({
             ))}
         </FreeService>
         <RateText>{`${rate}성급 호텔`}</RateText>
+        <PriceText>{price? `${price} 원~` : 'loading...'}</PriceText>
       </Content>
     </Container>
   );

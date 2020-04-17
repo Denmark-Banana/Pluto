@@ -25,30 +25,67 @@ export default () => {
   const [hotels, setHotels] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const checkItems = ['Free WIFI', 'Free Parking', 'Free Airport Pickup'];
-  
-  useEffect(() => {
-    async function getHotels() {
-      try {
-        const response = await api.fetchHotels(1, `PRICE=0:100000`);
-        console.log(response);
-        if(response.message)
-          setError(response.message);
-        else
-          setHotels(response);
-      } catch (e) {
-        setError(e);
-      } finally {
-        setLoading(false);
-      }
-    }
+  const [price, setPrice] = useState({
+    min: 0,
+    max: 1000000,
+  });
 
+  const checkItems = ['Free WIFI', 'Free Parking', 'Free Airport Pickup'];
+
+  const getHotelPrice = async (hotels) => {
+    try {
+      const filterbyIdxHotel =
+        hotels && hotels.length > 0 && hotels.filter((_, idx) => idx < 4);
+      const restIdxHotel =
+        hotels && hotels.length > 0 && hotels.filter((_, idx) => idx >= 4);
+
+      const ids = filterbyIdxHotel && filterbyIdxHotel.map((data) => data.id);
+      const res = await api.fetchHotelPrice(ids);
+
+      if (res.status === 200) {
+        if (filterbyIdxHotel && filterbyIdxHotel.length > 0) {
+          const newHotels = filterbyIdxHotel.map((hotel, idx) => ({
+            ...hotel,
+            price: res.data[ids[idx]],
+          }));
+
+          setHotels([...newHotels, ...restIdxHotel]);
+        }
+      } else {
+        console.log(res.message);
+        getHotelPrice(hotels);
+      }
+    } catch (e) {
+      console.log(e.message);
+      setError(e.message);
+    } finally {
+    }
+  };
+
+  const getHotels = async () => {
+    try {
+      const res = await api.fetchHotels(1, `PRICE=${price.min}:${price.max}`);
+      if (res.status === 200) {
+        console.log(res.data);
+        setHotels(res.data);
+
+        getHotelPrice(res.data);
+      } else setError(res.message);
+    } catch (e) {
+      console.log(e.message);
+      setError(e.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
     getHotels();
   }, []);
 
   return (
     <Container>
-      <Filter checkItems={checkItems}/>
+      <Filter checkItems={checkItems} price={price} />
       <Result>
         <Recent />
         {loading ? (
@@ -67,6 +104,7 @@ export default () => {
                     rate={hotel.rate}
                     reviewScore={hotel.reviewScore}
                     totalReviewCount={hotel.totalReviewCount}
+                    price={hotel.price}
                   />
                 ))}
               </List>
